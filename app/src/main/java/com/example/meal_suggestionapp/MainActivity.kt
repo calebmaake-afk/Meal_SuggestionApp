@@ -92,7 +92,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             }
                         ) {
-                            Text("Search")
+                            Text("Meal Suggestion")
                         }
 
                         Button(
@@ -101,7 +101,7 @@ class MainActivity : ComponentActivity() {
                                 result = ""
                             }
                         ) {
-                            Text("Clear")
+                            Text("Rest")
                         }
                     }
 
