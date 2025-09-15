@@ -6,9 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -22,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.meal_suggestionapp.ui.theme.Meal_SuggestionAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -33,8 +37,8 @@ class MainActivity : ComponentActivity() {
                 val timesofday = arrayOf("Morning","Mid-Morning Snack","Afternoon","Afternoon-Snack","Dinner","After Dinner Snack")
                 var mealsuggestions = arrayOf("Pan Cakes,Smoothie", "Light Snack, Yoghurt", "Sandwich,Salad","Quick bites","Pasta,Stir Fry","Ice Cream,Fruit salad")
 
-                var usericon by remember {
-                    mutableStateOf("")
+                var timeofday by remember {
+                    mutableStateOf("Time of day ")
                 }
 
 
@@ -45,38 +49,43 @@ class MainActivity : ComponentActivity() {
                 Column (
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxSize()
+
                 ){
-                    Text("Meal Suggestion")
+                    Text(
+                        "Meal Suggestion",
+                        fontSize = 30.sp,
+                        fontWeight = FontWeight.Black
+
+                    )
+                    Divider()
+                    Spacer(modifier = Modifier.size(30.dp) )
+
                     OutlinedTextField(
-                        value = usericon,
+                        value = timeofday,
                         onValueChange = { text ->
-                            usericon = text
+                            timeofday = text
                         },
                         label = {
-                            Text(
-                                "Enter icon name",
-                                fontSize = 30.sp,
-                                fontWeight = FontWeight.Black
-                            )
+                            Text("Enter the time of day ")
                         }
                     )
-
+                    Spacer(modifier = Modifier.size(30.dp) )
                     Row {
                         Button(
                             onClick = {
-                                if (usericon == timesofday[0]){
+                                if (timeofday == timesofday[0]){
                                     result = mealsuggestions[0]
-                                }else if(usericon == timesofday[1]){
+                                }else if(timeofday == timesofday[1]){
                                     result = mealsuggestions[1]
-                                }else if(usericon == timesofday[2]){
+                                }else if(timeofday == timesofday[2]){
                                     result = mealsuggestions[2]
-                                }else if(usericon == timesofday[3]){
+                                }else if(timeofday == timesofday[3]){
                                     result = mealsuggestions[3]
-                                }else if(usericon == timesofday[4]){
+                                }else if(timeofday == timesofday[4]){
                                     result = mealsuggestions[4]
-                                }else if(usericon == timesofday[5]){
+                                }else if(timeofday == timesofday[5]){
                                     result = mealsuggestions[5]
-                                }else if(usericon == timesofday[6]){
+                                }else if(timeofday == timesofday[6]){
                                     result = mealsuggestions[6]
                                 }else{
                                     result = "Error!!!!!,Try Entering Morning,Afternoon,Dinner for valid Suggestions"
@@ -88,7 +97,7 @@ class MainActivity : ComponentActivity() {
 
                         Button(
                             onClick = {
-                                usericon = ""
+                                timeofday = ""
                                 result = ""
                             }
                         ) {
