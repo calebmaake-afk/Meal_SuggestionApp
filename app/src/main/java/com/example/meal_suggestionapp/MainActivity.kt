@@ -17,7 +17,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.meal_suggestionapp.ui.theme.Meal_SuggestionAppTheme
 
@@ -39,7 +42,10 @@ class MainActivity : ComponentActivity() {
                     mutableStateOf("")
                 }
 
-                Column {
+                Column (
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxSize()
+                ){
                     Text("Meal Suggestion")
                     OutlinedTextField(
                         value = usericon,
@@ -47,7 +53,11 @@ class MainActivity : ComponentActivity() {
                             usericon = text
                         },
                         label = {
-                            Text("Enter icon name")
+                            Text(
+                                "Enter icon name",
+                                fontSize = 30.sp,
+                                fontWeight = FontWeight.Black
+                            )
                         }
                     )
 
